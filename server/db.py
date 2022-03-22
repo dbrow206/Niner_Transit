@@ -33,6 +33,9 @@ class StopPoint(Base):
     stop = Column(String)
     onoff = Column(String, primary_key=True)
 
+    def __repr__(self):
+        return str(self.bus) + str(self.date_time)
+
 
 class StopSummary(Base):
     __tablename__ = 'stop_summary'
@@ -51,8 +54,7 @@ class UserTable(Base):
     email = Column(String, nullable=False)
     userid = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
 
-    def __repr__(self):
-        return str(self.bus) + str(self.date_time)
+
 
 
 # Create our Feedback table
@@ -64,6 +66,4 @@ class Feedback(Base):
 
     commenter = relationship("UserTable", foreign_keys=commenter_id)
 
-    def __repr__(self):
-        return str(self.bus) + str(self.date_time)
 
