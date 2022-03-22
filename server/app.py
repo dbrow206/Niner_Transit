@@ -26,6 +26,11 @@ def post_feedback():
     """Send Feedback"""
     return "WIP FEEDBACK HERE"
 
+@app.get('/feedback')
+def get_feedback():
+    """Get Feedback"""
+    return "WIP FEEDBACK HERE"
+
 @app.get('/stop/<data>')
 def get_stop(data):
     # Init our timer
@@ -187,7 +192,7 @@ def get_points_by_hour(data):
 @app.get('/points/year/<year>/month/<month>')
 def get_points_by_year_and_month(year,month):
     """Returns specific set of points by route"""
-    # Init our timer
+    # Init our timer>'
     timer = datetime.now()
     out = {}
     result = db.session.query(db.StopPoint).where(db.and_(db.extract('year',db.StopPoint.date_time)==year, db.extract('month',db.StopPoint.date_time)==month))
