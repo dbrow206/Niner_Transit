@@ -58,3 +58,28 @@ ul{
   padding-left: 300px;
   padding-top: 75 px;
 }
+
+.table_Data {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border: 3px solid goldenrod;
+}
+
+.table_Data td  {
+  padding: 10px;
+  border: 3px solid goldenrod;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: goldenrod;
+  text-align: center;
+}
