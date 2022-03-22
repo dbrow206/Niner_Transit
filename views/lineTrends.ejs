@@ -1,5 +1,5 @@
 <%- include('./partials/header.ejs')%>
-
+<div class ="leftDiv">
 <div>
     <canvas id="myChart" height="500" width="500"></canvas>
   </div>
@@ -39,7 +39,7 @@
          
          layout:{
                padding:{
-                   right    :1000
+                   right:500
                }
            },
          "responsive": true,
@@ -49,7 +49,7 @@
        }
     };
   </script>
-<div class ="graphLeft">
+
 <script>
     const myChart = new Chart(
       document.getElementById('myChart'),
@@ -58,6 +58,15 @@
   </script>
 </div>
 
+<div class = "rightDiv">
+<button>Monday</button>
+<button>Tuesday</button>
+<button>Wednesday</button>
+<button>Thursday</button>
+<button>Friday</button>
+<button>Saturday</button>
+<button>Sunday</button>
+</div>
 
 
 

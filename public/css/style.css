@@ -44,3 +44,17 @@ ul{
 .graphLeft{
   padding-right: 1600px;
 }
+
+.rightDiv{
+  margin-left: 50%;
+  height: 100px;
+  padding-top: 125px;
+}
+
+.leftDiv{
+  width: 50%; 
+  height: 100px; 
+  float: left;
+  padding-left: 300px;
+  padding-top: 75 px;
+}
