@@ -1,0 +1,46 @@
+html {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 116, 0);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1{
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 60pt;
+}
+nav{
+
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+  font-size: 20pt;
+  text-align: center;
+  text-emphasis-color:  rgb(0, 0, 0);
+
+
+}
+nav a:hover {
+  background-color: rgb(197, 197, 197);
+  color: black;
+}
+p{
+  font-size: 15pt;    
+  font-weight: bold;
+  text-emphasis-color: rgb(255, 255, 255);
+}
+div{
+  border: black;
+}
+h3{
+  align-content: center;
+  font-size: 25pt;
+}
+ul{
+  align-content: center;
+}
+
+.graphLeft{
+  padding-right: 1600px;
+}
