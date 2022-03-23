@@ -1,8 +1,8 @@
 var express = require('express');
 var path = require('path');
 var morgan = require('morgan');
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var trendsRouter = require('./routes/trends');
 const { getEnvironmentData } = require('worker_threads');
 const fetch = require('node-fetch');
 
@@ -27,18 +27,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname+'/public'));
 //app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/trends', trendsRouter);
 //set up routes
+
 app.get('/index', (req,res) =>{ 
   res.render('index');
 });
 
 app.get('/interactiveMap', (req,res)=>{
   res.render('interactiveMap');
-});
-
-app.get('/lineTrends', (req,res)=>{
-  res.render('lineTrends');
 });
 
 app.get('/stopTrends', (req,res)=>{
@@ -49,18 +46,17 @@ app.get('/suggestions', (req,res)=>{
   res.render('suggestions');
 });
 
+async function getLines(color){
+  const response = await fetch(
+    'http://127.0.0.1:5000/lines'
+  );
+  var JsonData = await response.json();
+  var parseData = JSON.parse((JSON.stringify(JsonData)));
+  console.log(parseData[color].people);
 
+}
+getLines('Green');
 
-  async function getLines(){
-    const response = await fetch(
-      'http://127.0.0.1:5000/lines'
-    );
-    const data = await response.json();
-    
-    console.log(data.name);
-    const GreenLines = data.people;
-    console.log(GreenLines);
-  }
-  getLines();
+module.exports = app
 
-module.exports = app;
+//const parseData = JSON.parse(JSON.stringify(JsonData))
