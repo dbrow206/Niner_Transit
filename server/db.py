@@ -47,6 +47,13 @@ class StopSummary(Base):
     on_average = Column(Float)
     off_average = Column(Float)
 
+class RouteSummary(Base):
+    __tablename__ = 'route_summary'
+    route = Column(String, primary_key=True)
+    on = Column(Integer)
+    on_count = Column(Integer)
+    on_average = Column(Float)
+
 
 # Create our User table
 class UserTable(Base):

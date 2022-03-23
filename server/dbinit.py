@@ -44,11 +44,18 @@ class StopSummary(Base):
     on_average = Column(Float)
     off_average = Column(Float)
 
+class RouteSummary(Base):
+    __tablename__ = 'route_summary'
+    route = Column(String, primary_key=True)
+    on = Column(Integer)
+    on_count = Column(Integer)
+    on_average = Column(Float)
+
 #Create our User table
 class UserTable(Base):
     __tablename__ = 'user_data'
     email = Column(String, nullable=False)
-    userid = Column(Integer, primary_key=True, nullable=False, autoincrement=True),
+    userid = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     api_key = Column(String, nullable=False)
 
 
@@ -72,6 +79,8 @@ Base.metadata.create_all(engine)
 stop_data_dict = {}
 stop_template = {"on":0,"off":0,"stop_count":0}
 
+route_data_dict = {}
+
 failed_reads = 0
 with open('Resources/data_pt1.csv', newline='',encoding="utf8") as data:
   prev_value = None
@@ -81,7 +90,9 @@ with open('Resources/data_pt1.csv', newline='',encoding="utf8") as data:
         data_date_time = datetime.strptime((str(line[0]) + "-" + str(line[1])), '%m/%d/%Y-%H:%M:%S')
         #Create our object
         if line[8] not in stop_data_dict:
-            stop_data_dict[line[8]] = {"on":0,"off":0,"stop_count":0, "on_count":0,"off_count":0}
+            stop_data_dict[line[8]] = {"on":0,"off":0,"stop_count":0, "on_count":1,"off_count":1}
+        if line[7] not in route_data_dict.keys():
+            route_data_dict[line[7]] = {"count":1,"stops":1}
         stop_data = StopPoint(date_time = data_date_time,
                               bus = int(line[2]),
                               count = int(line[3]),
@@ -90,10 +101,17 @@ with open('Resources/data_pt1.csv', newline='',encoding="utf8") as data:
                               long = float(line[6]),
                               route = line[7],
                               stop = line[8])
-        #Set up our summary values etc
+        # Set up our route values etc
+        route_data_dict[line[7]]["count"] +=int(line[3])
+        route_data_dict[line[7]]["stops"] += 1
+        # Set up our summary values etc
         stop_data_dict[line[8]][line[4]] +=int(line[3])
         stop_data_dict[line[8]]['stop_count'] +=1
         stop_data_dict[line[8]][line[4]+'_count'] += 1
+        # I AM CONSIDERING STORING THE ROUTE AND STOP SUMMARIES IN MEMORY,
+        # THE ONLY DOWNSIDE TO THAT IS WE NEED TO EITHER REACQUIRE THEM
+        # EVERYTIME WE LAUNCH OR STORE THEM SOMEWHERE
+        # PERF DIFFERENCE IS PROBABLY NEGLIGIBLE
         if not prev_value == (str(data_date_time) + line[4]):
             #We want to make sure it's not a duplicate value, so we check it against the last key value we received
             1==1
@@ -116,6 +134,14 @@ for key in stop_data_dict:
                           stop=key,
                           on_average=stop_data_dict[key]["on"]/stop_data_dict[key]["on_count"],
                           off_average=stop_data_dict[key]["off"] / stop_data_dict[key]["off_count"]
+                          )
+    session.add(summary)
+
+for key in route_data_dict:
+    summary = RouteSummary(on = route_data_dict[key]["count"],
+                          on_count=route_data_dict[key]["stops"],
+                          on_average=route_data_dict[key]["count"]/route_data_dict[key]["stops"],
+                          route=key
                           )
     session.add(summary)
 

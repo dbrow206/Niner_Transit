@@ -1,9 +1,10 @@
 from flask import Flask
+from waitress import serve
 import db
 from datetime import datetime
 from tqdm import tqdm
 app = Flask(__name__)
-from waitress import serve
+
 #We're gonna use waitress to serve the app... eventually
 cache = {}
 @app.get('/')
@@ -192,7 +193,7 @@ def get_points_by_hour(data):
 @app.get('/points/year/<year>/month/<month>')
 def get_points_by_year_and_month(year,month):
     """Returns specific set of points by route"""
-    # Init our timer>'
+    # Init our timer
     timer = datetime.now()
     out = {}
     result = db.session.query(db.StopPoint).where(db.and_(db.extract('year',db.StopPoint.date_time)==year, db.extract('month',db.StopPoint.date_time)==month))
@@ -202,6 +203,42 @@ def get_points_by_year_and_month(year,month):
                                                                           "route": row.route,
                                                                           "lat": row.lat,
                                                                           "long": row.long}
+    print(datetime.now() - timer)
+    return out
+
+@app.get('/lines')
+def get_lines():
+    """Returns all lines"""
+    # Init our timer
+    timer = datetime.now()
+    out = {}
+    result = db.session.query(db.RouteSummary).all()
+    for row in result:
+        out[row.route] ={"people":row.on,"stops":row.on_count}
+    print(datetime.now() - timer)
+    return out
+
+@app.get('/line/name/<name>')
+def get_line_by_name(name):
+    """Returns specific line"""
+    # Init our timer
+    timer = datetime.now()
+    out = {}
+    result = db.session.query(db.RouteSummary).where(db.RouteSummary.route == name)
+    for row in result:
+        out[row.route] ={"people":row.on,"stops":row.on_count}
+    print(datetime.now() - timer)
+    return out
+
+@app.get('/line/riders/<riders>')
+def get_line_by_riders(riders):
+    """Returns specific line"""
+    # Init our timer
+    timer = datetime.now()
+    out = {}
+    result = db.session.query(db.RouteSummary).where(db.RouteSummary.on > riders)
+    for row in result:
+        out[row.route] ={"people":row.on,"stops":row.on_count}
     print(datetime.now() - timer)
     return out
 
