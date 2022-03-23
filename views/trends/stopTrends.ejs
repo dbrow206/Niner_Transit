@@ -1,0 +1,56 @@
+<%- include('../partials/header.ejs')%>
+
+  
+<div>
+    <canvas id="myChart" height="500" width="500"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+  <script>
+    const labels = [
+      'Green',
+      'Silver',
+      'Gold',
+    ];
+  
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'Line Trend Data',
+        backgroundColor:[
+         'rgb(89,248,89)',
+         'rgb(255, 223, 0)',
+         'rgb(192, 192, 192)'
+      ]
+      ,
+        borderColor: 'rgb(0, 0, 0)',
+        //Call data from api?
+        data: [40, 10, 50],
+      }]
+    };  
+    const config = {
+      type: 'pie',
+      data: data,
+      options: {
+        "responsive": true,
+        "maintainAspectRatio": false
+        
+        
+      }
+    };
+  </script>
+<div >
+<script>
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script>
+</div>
+
+
+
+
+<%- include('../partials/footer.ejs')%>
