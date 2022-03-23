@@ -1,30 +1,42 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(74, 163, 10);
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+
 html {
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 116, 0);
+  background-color: rgb(220, 255, 255);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 h1{
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(0, 116, 0);
   text-align: center;
   font-size: 60pt;
 }
-nav{
 
-  background-color: rgb(255, 255, 255);
-  overflow: hidden;
-  font-size: 20pt;
-  text-align: center;
-  text-emphasis-color:  rgb(0, 0, 0);
-
-
-}
-nav a:hover {
-  background-color: rgb(197, 197, 197);
-  color: black;
-}
 p{
   font-size: 15pt;    
   font-weight: bold;
