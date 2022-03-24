@@ -27,12 +27,10 @@
             center: [35.307088816476536, -80.7352033975093],
             zoom: 1
         }  // https://www.openstreetmap.org/way/168664114#map=15/35.3069/-80.7337
-       var map = L.map('map').setView([35.3069,-80.7337], 15); 
+       var map = L.map('map').setView([35.3069,-80.7337], 16); 
        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-           zoom: 16
-        
-        }).addTo (map);
+           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'    
+        }).addTo(map);
         
     </script>
     </body>
