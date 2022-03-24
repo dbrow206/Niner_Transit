@@ -88,10 +88,25 @@ ul{
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   left: 0;
   background-color: goldenrod;
   text-align: center;
+}
+
+nav{
+  transform: translate(0%, -10%);
+  outline-color: black;
+}
+Title{
+  background-color: rgb(0, 116, 0);
+  text-align: center;
+  font-size: 60pt;
+}
+
+form{
+  text-decoration-color: goldenrod;
+  align-content: center;
 }

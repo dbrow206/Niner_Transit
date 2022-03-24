@@ -27,9 +27,9 @@
       ,
         borderColor: 'rgb(0, 0, 0)',
         data: 
-        [349068,
-        201524,
-        870757],
+        [ <%=avgRiders['green']%>,
+        <%=avgRiders['gold']%>,
+        <%=avgRiders['silver']%>],
       }]
     };  
 
@@ -70,17 +70,17 @@
       <th>Busiest Time</th>
     </tr>
     <tr>
-      <td>Gold Line</td>
-      <td>Gold Line 2:00PM</td>  
+      <td>Gold Line: <%=avgRiders['gold']%></td>
+      <td>Gold Line: <%=peakTime['gold']%></td>  
     </tr>
     <tr>
      
-        <td> Silver Line </td>
-        <td>Silver Line 2:00PM</td> 
+        <td> Silver Line: <%=avgRiders['silver']%> </td>
+        <td>Silver Line <%=peakTime['silver']%></td> 
     </tr>
     <tr>
-        <td>Green Line </td>
-        <td>Green Line 2:00PM</td> 
+        <td>Green Line: <%=avgRiders['green']%></td>
+        <td>Green Line <%=peakTime['green']%></td> 
     </tr>
   </table>
 </div>

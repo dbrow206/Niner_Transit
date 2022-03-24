@@ -5,6 +5,8 @@ var usersRouter = require('./routes/users');
 var trendsRouter = require('./routes/trends');
 const { getEnvironmentData } = require('worker_threads');
 const fetch = require('node-fetch');
+const { promiseImpl } = require('ejs');
+
 
 
 //create The App
@@ -38,24 +40,10 @@ app.get('/interactiveMap', (req,res)=>{
   res.render('interactiveMap');
 });
 
-app.get('/stopTrends', (req,res)=>{
-  res.render('stopTrends');
-});
 
 app.get('/suggestions', (req,res)=>{
   res.render('suggestions');
 });
-
-async function getLines(color){
-  const response = await fetch(
-    'http://127.0.0.1:5000/lines'
-  );
-  var JsonData = await response.json();
-  var parseData = JSON.parse((JSON.stringify(JsonData)));
-  console.log(parseData[color].people);
-
-}
-getLines('Green');
 
 module.exports = app
 
