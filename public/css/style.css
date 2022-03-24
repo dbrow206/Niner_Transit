@@ -3,10 +3,11 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: rgb(74, 163, 10);
+  background-color: rgb(0, 116, 0);
 }
 
 li {
+  align-content: center;
   float: right;
 }
 
@@ -14,7 +15,7 @@ li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 10px;
   text-decoration: none;
 }
 
@@ -22,19 +23,19 @@ li a:hover {
   background-color: #111;
 }
 
-
 html {
   width: 100%;
   height: 100%;
-  background-color: rgb(220, 255, 255);
+  background-color: rgb(247, 255, 245);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 h1{
   background-color: rgb(0, 116, 0);
+  color: rgb(247, 255, 245);
   text-align: center;
-  font-size: 60pt;
+  font-size: 40pt;
 }
 
 p{
@@ -42,15 +43,10 @@ p{
   font-weight: bold;
   text-emphasis-color: rgb(255, 255, 255);
 }
-div{
-  border: black;
-}
+
 h3{
   align-content: center;
   font-size: 25pt;
-}
-ul{
-  align-content: center;
 }
 
 .graphLeft{
@@ -60,7 +56,8 @@ ul{
 .rightDiv{
   margin-left: 50%;
   height: 100px;
-  padding-top: 125px;
+  padding-top: 250px;
+  padding-right: 75px;
 }
 
 .leftDiv{
@@ -69,6 +66,20 @@ ul{
   float: left;
   padding-left: 300px;
   padding-top: 75 px;
+}
+
+.imageLeft{
+  width:50%;
+  height: 500px;
+  float: left;
+  padding-top: 100px;
+  padding-left: 55px;
+}
+
+.textRight{
+  margin-left: 50%;
+  height: 100px;
+  padding-top: 100px;
 }
 
 .table_Data {
@@ -94,4 +105,112 @@ footer {
   left: 0;
   background-color: goldenrod;
   text-align: center;
+}
+
+input[type=text], select, textarea {
+  width: 50%; 
+  padding: 12px;  
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+  margin-top: 6px; 
+  margin-bottom: 16px;
+  resize: vertical 
+}
+
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+#main {
+  width: max-content;
+  margin: 40px auto;
+  font-family: "Segoe UI", sans-serif;
+  padding: 25px 28px;
+  background: rgb(0, 116, 0);
+  border-radius: 4px;
+  border: 1px solid #302d2d;
+  animation: popup 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes popup {
+  0% {
+      transform: scale(0.2);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color: white;
+}
+.input-parent {
+  display: block;
+  margin-bottom: 20px;
+}
+label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #a4a4a4;
+}
+.input-parent input {
+  padding: 10px 8px;
+  width: 100%;
+  font-size: 16px;
+  background: goldenRod;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.input-parent input:hover {
+  background: goldenRod;
+}
+.input-parent input:focus {
+  box-shadow: 0px 0px 0px 1px #00ff48;
+}
+button {
+  padding: 10px 18px;
+  font-size: 15px;
+  background: goldenrod;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  color: #f4f4f4;
+  transition: all 0.2s ease;
+}
+body{
+  margin: 0px
+}
+form{
+  padding-left: 25px;
+}
+h4{
+  padding-left: 25px;
+  font-size: 20px;
 }

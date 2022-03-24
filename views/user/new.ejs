@@ -1,30 +1,25 @@
 <%- include('../partials/header.ejs')%>
-<div class = "content">
-    <form action = '/users/new' method = 'POST'>
-        <table>
-            <tr>
-                <td><label for="firstName">First Name</label></td>
-                <td><input type="text" id="firstName" name="firstName" class = "fixed-width" required></td>
-            </tr>
-            <tr>
-                <td><label for="lastName">Last Name</label></td>
-                <td><input type="text" id="lastName" name="lastName" class = "fixed-width" required></td>
-            </tr>
+<form action="#!" id="main">
+    <h2>Sign Up for an account</h2>
 
-            <tr>
-                <td><label for="email">Email Address</label></td>
-                <td><input type="email" id="email" name="email" class = "fixed-width" required></td>
-            </tr>
-            <tr>
-                <td><label for="password">Password</label></td>
-                <td><input type="password" id="password" name="password" class = "fixed-width" minlength="8" required></td>
-            </tr>
-            
-            <tr>
-                <td colspan="2" class = "align-right"><button>Sign Up</button></td>
-            </tr>
-        </table>        
-    </form>
-
+    <div class="input-parent">
+      <label for="username">First Name</label>
+      <input type="text" id="username">
     </div>
+    <div class="input-parent">
+        <label for="username">Last Name</label>
+        <input type="text" id="username">
+      </div>
+      <div class="input-parent">
+        <label for="username">Username or Email</label>
+        <input type="text" id="username">
+      </div>
+
+    <div class="input-parent">
+      <label for="password">Password</label>
+      <input type="password" id="password">
+    </div>
+
+    <button type="submit">Sign Up</button>
+  </form>
     <%- include('../partials/footer.ejs')%>
