@@ -53,6 +53,7 @@ class RouteSummary(Base):
     on = Column(Integer)
     on_count = Column(Integer)
     on_average = Column(Float)
+    peak_hour = Column(Integer)
 
 
 # Create our User table
@@ -60,6 +61,36 @@ class UserTable(Base):
     __tablename__ = 'user_data'
     email = Column(String, nullable=False)
     userid = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+
+#Create our peak riders table
+class LineTimes(Base):
+    __tablename__ = 'line_times'
+    line = Column(String, primary_key=True, nullable=False)
+    hour_1 = Column(Integer)
+    hour_2 = Column(Integer)
+    hour_3 = Column(Integer)
+    hour_4 = Column(Integer)
+    hour_5 = Column(Integer)
+    hour_6 = Column(Integer)
+    hour_7 = Column(Integer)
+    hour_8 = Column(Integer)
+    hour_9 = Column(Integer)
+    hour_10 = Column(Integer)
+    hour_11 = Column(Integer)
+    hour_12 = Column(Integer)
+    hour_13 = Column(Integer)
+    hour_14 = Column(Integer)
+    hour_15 = Column(Integer)
+    hour_16 = Column(Integer)
+    hour_17 = Column(Integer)
+    hour_18 = Column(Integer)
+    hour_19 = Column(Integer)
+    hour_20 = Column(Integer)
+    hour_21 = Column(Integer)
+    hour_22 = Column(Integer)
+    hour_23 = Column(Integer)
+    hour_0 = Column(Integer)
+    peak_hour = Column(Integer)
 
 
 

@@ -50,6 +50,7 @@ class RouteSummary(Base):
     on = Column(Integer)
     on_count = Column(Integer)
     on_average = Column(Float)
+    peak_hour = Column(Integer)
 
 #Create our User table
 class UserTable(Base):
@@ -57,6 +58,36 @@ class UserTable(Base):
     email = Column(String, nullable=False)
     userid = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     api_key = Column(String, nullable=False)
+
+#Create our peak riders table
+class LineTimes(Base):
+    __tablename__ = 'line_times'
+    line = Column(String, primary_key=True, nullable=False)
+    hour_1 = Column(Integer)
+    hour_2 = Column(Integer)
+    hour_3 = Column(Integer)
+    hour_4 = Column(Integer)
+    hour_5 = Column(Integer)
+    hour_6 = Column(Integer)
+    hour_7 = Column(Integer)
+    hour_8 = Column(Integer)
+    hour_9 = Column(Integer)
+    hour_10 = Column(Integer)
+    hour_11 = Column(Integer)
+    hour_12 = Column(Integer)
+    hour_13 = Column(Integer)
+    hour_14 = Column(Integer)
+    hour_15 = Column(Integer)
+    hour_16 = Column(Integer)
+    hour_17 = Column(Integer)
+    hour_18 = Column(Integer)
+    hour_19 = Column(Integer)
+    hour_20 = Column(Integer)
+    hour_21 = Column(Integer)
+    hour_22 = Column(Integer)
+    hour_23 = Column(Integer)
+    hour_0 = Column(Integer)
+    peak_hour = Column(Integer)
 
 
 #Create our Feedback table
@@ -68,6 +99,13 @@ class Feedback(Base):
     
     commenter = relationship("UserTable", foreign_keys=commenter_id)
 
+
+#DROP ALL TABLES IF THEY EXIST TO AVOID KEY ERRORS!
+try:
+    Base.metadata.drop_all(engine)
+    session.commit()
+except Exception:
+    print("Tables Dont exist")
 #Create our tables in engine
 Base.metadata.create_all(engine)
 #Columns are
@@ -82,8 +120,11 @@ stop_template = {"on":0,"off":0,"stop_count":0}
 route_data_dict = {}
 
 failed_reads = 0
-with open('Resources/data_pt1.csv', newline='',encoding="utf8") as data:
+
+
+with open('resources/data_pt1.csv', newline='',encoding="utf8") as data:
   prev_value = None
+  hour_dict = [0]*24
   reader = csv.reader(data)
   for line in tqdm(reader):
     try:
@@ -92,7 +133,7 @@ with open('Resources/data_pt1.csv', newline='',encoding="utf8") as data:
         if line[8] not in stop_data_dict:
             stop_data_dict[line[8]] = {"on":0,"off":0,"stop_count":0, "on_count":1,"off_count":1}
         if line[7] not in route_data_dict.keys():
-            route_data_dict[line[7]] = {"count":1,"stops":1}
+            route_data_dict[line[7]] = {"count":1,"stops":1,"peak":1,'hours': hour_dict.copy()}
         stop_data = StopPoint(date_time = data_date_time,
                               bus = int(line[2]),
                               count = int(line[3]),
@@ -104,6 +145,7 @@ with open('Resources/data_pt1.csv', newline='',encoding="utf8") as data:
         # Set up our route values etc
         route_data_dict[line[7]]["count"] +=int(line[3])
         route_data_dict[line[7]]["stops"] += 1
+        route_data_dict[line[7]]["hours"][int(data_date_time.hour)] += int(line[3])
         # Set up our summary values etc
         stop_data_dict[line[8]][line[4]] +=int(line[3])
         stop_data_dict[line[8]]['stop_count'] +=1
@@ -115,7 +157,7 @@ with open('Resources/data_pt1.csv', newline='',encoding="utf8") as data:
         if not prev_value == (str(data_date_time) + line[4]):
             #We want to make sure it's not a duplicate value, so we check it against the last key value we received
             1==1
-            #session.add(stop_data)
+            session.add(stop_data)
         prev_value = str(data_date_time) + line[4]
         if debug:
             print("Added " + str(line))
@@ -138,10 +180,12 @@ for key in stop_data_dict:
     session.add(summary)
 
 for key in route_data_dict:
+    print(route_data_dict[key]["hours"])
     summary = RouteSummary(on = route_data_dict[key]["count"],
                           on_count=route_data_dict[key]["stops"],
                           on_average=route_data_dict[key]["count"]/route_data_dict[key]["stops"],
-                          route=key
+                          route=key,
+                          peak_hour = max(range(len(route_data_dict[key]["hours"],)), key=route_data_dict[key]["hours"].__getitem__)
                           )
     session.add(summary)
 

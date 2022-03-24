@@ -214,7 +214,7 @@ def get_lines():
     out = {}
     result = db.session.query(db.RouteSummary).all()
     for row in result:
-        out[row.route] ={"people":row.on,"stops":row.on_count}
+        out[row.route] ={"people":row.on,"stops":row.on_count,"peak_hour":row.peak_hour}
     print(datetime.now() - timer)
     return out
 
