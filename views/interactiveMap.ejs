@@ -17,15 +17,16 @@
         #map{position: absolute; top: 0; bottom: 0; right: 0; height: 100px}
     </style>
     
-    <div id="map"></div>
-    <script>   
-        var map =L.map('map',{
-        center: [9.0820, 8.6753],
-        zoom:8
-        });
-        // OSM (Open Street Map)
-        var osm = L.tileLayer('https://www.openstreetmap.org/way/168664114#map=15/35.3069/-80.7337', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo (map);
-      
+    <div id="map" style = "width: 900px; height: 580px"></div>
+    <script>  
+        var mapOptions = {
+            center: [35.3069,-80.7337],
+            zoom: 10
+        } 
+       
+       var map = L.map('map', mapOptions); 
+       var osm = new L.tileLayer('https://www.openstreetmap.org/way/168664114#map=15/35.3069/-80.7337', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo (map);
+       map.addLayer(osm); 
     </script>
  
 <%- include('./partials/footer.ejs')%>
