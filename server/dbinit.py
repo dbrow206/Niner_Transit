@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine, Integer, Column, String, DateTime, SmallInteger, Float, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker,  relationship
-from datetime import date, time, datetime
+from datetime import datetime
 import csv
 from tqdm import tqdm
 import psycopg2
@@ -156,7 +156,6 @@ with open('resources/data_pt1.csv', newline='',encoding="utf8") as data:
         # PERF DIFFERENCE IS PROBABLY NEGLIGIBLE
         if not prev_value == (str(data_date_time) + line[4]):
             #We want to make sure it's not a duplicate value, so we check it against the last key value we received
-            1==1
             session.add(stop_data)
         prev_value = str(data_date_time) + line[4]
         if debug:
