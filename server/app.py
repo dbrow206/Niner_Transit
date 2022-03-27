@@ -3,20 +3,40 @@ from waitress import serve
 import db
 from datetime import datetime
 from tqdm import tqdm
+from flask_caching import Cache
 
+cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
+
+CACHE_TIMEOUT = 60
+
+CACHING_DISABLED = False
 app = Flask(__name__)
-
+cache.init_app(app)
 # We're gonna use waitress to serve the app... eventually
-cache = {}
 
 
 @app.get('/')
+@cache.cached(timeout=CACHE_TIMEOUT,unless=CACHING_DISABLED)
 def landing():
     """Landing page"""
     return "Landing Page"
 
 
+@app.get('/disable_caching/<disable>')
+def disable_caching(disable):
+    """Enable/Disable caching"""
+    if disable.lower() == "true":
+        CACHING_DISABLED = True
+        return "Caching Disabled"
+    elif disable.lower() == "false":
+        CACHING_DISABLED = False
+        return "Caching Enabled"
+    else:
+        return "supply True or False to change caching status"
+
+
 @app.get('/documentation')
+@cache.cached(timeout=CACHE_TIMEOUT, unless=CACHING_DISABLED)
 def documentation():
     """Documentation"""
     return "WIP DOCS HERE"
@@ -41,7 +61,9 @@ def get_feedback():
 
 
 @app.get('/stop/<data>')
+@cache.cached(timeout=CACHE_TIMEOUT,unless=CACHING_DISABLED)
 def get_stop(data):
+    """Returns specific stop summary"""
     # Init our timer
     timer = datetime.now()
     """Returns specific stop summary"""
@@ -57,6 +79,7 @@ def get_stop(data):
 
 
 @app.get('/stop/search/<data>')
+@cache.cached(timeout=CACHE_TIMEOUT,unless=CACHING_DISABLED)
 def search_stop(data):
     """Searches for stop summaries"""
     # Init our timer
@@ -74,6 +97,7 @@ def search_stop(data):
 
 
 @app.get('/stop')
+@cache.cached(timeout=CACHE_TIMEOUT)
 def get_all_stops():
     """Returns all stop summaries"""
     # Init our timer
@@ -91,6 +115,7 @@ def get_all_stops():
 
 
 @app.get('/points')
+@cache.cached(timeout=CACHE_TIMEOUT)
 def get_all_points():
     """Returns all points, don't use this unless you MUST"""
     # Init our timer
