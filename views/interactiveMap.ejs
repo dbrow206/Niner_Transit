@@ -23,6 +23,58 @@
     <body>
     <div id="map" ></div>
     <script>  
+   //TODO pull average_on from trendcollorer
+  var locations = [
+       ['CRI Deck' , 35.30948257, -80.74412537] ,
+       ['Martin Hall',35.31031799, -80.72667694 ] ,
+       ['Lot 5A', 35.30722427, -80.72528076] ,
+       ['Cone Deck W', 35.30802155, -80.73272705] ,
+       ['Duke Centennial Hall East',35.31235123,-80.74175263 ] ,
+       ['Lot 6',35.30878449,-80.72507477 ] ,
+       ['Student Union W',35.30792999,-80.73485565 ] ,
+       ['Grigg Hall E', 35.3109932, -80.74141693] ,
+       ['Student Union E', 35.30805969,-80.73272705 ] ,
+       ['Student Health N', 35.3107338,-80.72931671 ] ,
+       ['PORTAL East',35.31167221,-80.74246979 ] ,
+       ['Woodward Hall East', 35.30797195, -80.73479462 ] ,
+       ['Portal W',35.31167221, -80.74248505] ,
+       ['Wallis Hall W/Light Rail',35.31196594,-80.73337555] ,
+       ['Aux Services East',35.30807877,-80.73038483] ,
+       ['Union Deck/Belk N',35.30806732, -80.7327652] ,
+       ['Grigg Hall W',35.31105804,-80.74134827] ,
+       ['Wallis Hall E/Light Rail',35.31169128,-80.73307037] ,
+       ['East Deck 2',35.30635452,-80.72676086] ,
+       ['Athletics Complex W',35.3093071,-80.74128723] ,
+       ['Student Health E',35.30804825,-80.73270416] ,
+       ['Robinson Hall S',35.31085968,-80.72926331] ,
+       ['Aux Services West',35.3081131,-80.73021698] ,
+       ['EPIC N',35.30989456,-80.74181366] ,
+       ['Hickory Hall South',35.30904007,-80.72939301] ,
+       ['Fretwell N',35.30743027,-80.72937775] ,
+       ['Student Health (Green) W',35.31161881,-80.73044586] ,
+       ['Reese East',35.30433273,-80.73278809] ,
+       ['Hunt Hall',35.30121994,-80.7355957] ,
+       ['Robinson Hall N',35.30334091,-80.72945404] ,
+       ['Cato Hall N',35.30506134,-80.7282486] ,
+       ['Fretwell S',35.30702591,-80.72943878] ,
+       ['Cato Hall S',35.30509186,-80.72821808] ,
+       ['Foundation Bldg. North',35.29786682,-80.73634338] ,
+       ['Reese West',35.3044281,-80.73279572] ,
+       ['Harris Alumni Center South',35.30276108,-80.73832703] ,
+       ['Harris Alumni Center North', 35.30317307,-80.73797607] ,
+       ['Belk Hall S',35.31021881,-80.73612213] ,
+       ['North Deck',35.31352615,-80.73197174] ,
+       ['South Village Deck',35.30109024,-80.73571777] ,
+       ['Levine Hall E',35.30224228,-80.73267365] ,
+       ['Motor Sports',35.31280136,-80.74092865] ,
+       ['Cone Deck East',35.3042717,-80.7350235] ,
+       ['Levine Hall W',35.30192566,-80.7330246] ,
+       ['Athletics Complex E',35.30736542,-80.73970032] ,
+       ['Hickory Hall North',35.30928532607679, -80.72931301857577] ,
+
+];
+
+
         var mapOptions = {
             center: [35.307088816476536, -80.7352033975093],
             zoom: 1
@@ -32,6 +84,12 @@
            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'    
         }).addTo(map);
         
+        for (var i = 0; i < locations.length; i++) {
+         marker = new L.marker([locations[i][1], locations[i][2]])
+        .bindPopup(locations[i][0])
+        .addTo(map);
+}
+
     </script>
     </body>
  
