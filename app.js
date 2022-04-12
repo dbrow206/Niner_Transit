@@ -36,11 +36,6 @@ app.get('/index', (req,res) =>{
   res.render('index');
 });
 
-app.get('/interactiveMap', (req,res)=>{
-  res.render('interactiveMap');
-});
-
-
 app.get('/suggestions', (req,res)=>{
   res.render('suggestions');
 });

@@ -11,6 +11,22 @@ exports.line = (req, res)=>{
 };
 
 exports.stop = (req, res, next) => {
-  return res.render('./trends/stopTrends');
-}   
+  server.getStops()
+  .then(result=>{
+    var avgStopRiders = result[0];
+    res.render('./trends/stopTrends', {avgStopRiders});
+  })
+  .catch();
+};
+
+exports.mapstops = (req, res, next) => {
+  server.getStops()
+  .then(result=>{
+    var avgStopRiders = result[0];
+    res.render('./trends/interactiveMap', {avgStopRiders});
+  })
+  .catch();
+};
+
+  
 
