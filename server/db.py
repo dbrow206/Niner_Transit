@@ -20,6 +20,9 @@ session = Session()
 
 
 # Create our datapoint table
+# > The `StopPoint` class is a Python class that inherits from the `Base` class, and has a bunch of columns that are
+# Defining the columns of the table.
+# defined as class attributes
 class StopPoint(Base):
     cache_ok = True
     __tablename__ = 'transit_data'
@@ -34,9 +37,15 @@ class StopPoint(Base):
     onoff = Column(String, primary_key=True)
 
     def __repr__(self):
+        """
+        The __repr__ function is used to return a string representation of the object
+        :return: The bus number and the date and time of the bus.
+        """
         return str(self.bus) + str(self.date_time)
 
 
+# > The `StopSummary` class is a Python class that inherits from the `Base` class, and has a `stop` column that is a
+# string, and `on`, `off`, `on_count`, `off_count`, `on_average`, and `off_average` columns that are integers
 class StopSummary(Base):
     __tablename__ = 'stop_summary'
     stop = Column(String, primary_key=True)
@@ -47,6 +56,8 @@ class StopSummary(Base):
     on_average = Column(Float)
     off_average = Column(Float)
 
+# `RouteSummary` is a class that inherits from `Base` and has a table called `route_summary` with columns `route`, `on`,
+# `on_count`, `on_average`, and `peak_hour`
 class RouteSummary(Base):
     __tablename__ = 'route_summary'
     route = Column(String, primary_key=True)
@@ -57,6 +68,8 @@ class RouteSummary(Base):
 
 
 # Create our User table
+# The UserTable class is a table in the database that has two columns: email and userid. The email column is a string that
+# cannot be null, and the userid column is an integer that is the primary key, cannot be null, and autoincrements.
 class UserTable(Base):
     __tablename__ = 'user_data'
     email = Column(String, nullable=False)

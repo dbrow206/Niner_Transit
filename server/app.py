@@ -24,7 +24,14 @@ def landing():
 
 @app.get('/disable_caching/<disable>')
 def disable_caching(disable):
-    """Enable/Disable caching"""
+    """
+    It takes a string as an argument, and if the string is "true", it sets the global variable CACHING_DISABLED to True, and
+    if the string is "false", it sets the global variable CACHING_DISABLED to False
+
+    :param disable: a string that is either "true" or "false"
+    :return: the string "Caching Disabled" or "Caching Enabled"
+    """
+
     if disable.lower() == "true":
         CACHING_DISABLED = True
         return "Caching Disabled"
@@ -63,10 +70,17 @@ def get_feedback():
 @app.get('/stop/<data>')
 @cache.cached(timeout=CACHE_TIMEOUT,unless=CACHING_DISABLED)
 def get_stop(data):
-    """Returns specific stop summary"""
+    """
+    It takes a stop number, queries the database for the stop summary, and returns a dictionary with the stop number as the
+    key and the stop summary as the value
+
+    :param data: The stop number
+    :return: A dictionary with the stop number as the key and a dictionary of the stop summary as the value.
+    """
+
     # Init our timer
     timer = datetime.now()
-    """Returns specific stop summary"""
+
     out = {}
     try:
         row = db.session.query(db.StopSummary).where(db.StopSummary.stop == data).first()
@@ -81,7 +95,14 @@ def get_stop(data):
 @app.get('/stop/search/<data>')
 @cache.cached(timeout=CACHE_TIMEOUT,unless=CACHING_DISABLED)
 def search_stop(data):
-    """Searches for stop summaries"""
+    """
+    It takes a string, searches the database for all stops that contain that string, and returns a dictionary of all the
+    stops that contain that string
+
+    :param data: The search term
+    :return: A dictionary of stop summaries
+    """
+
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -99,7 +120,10 @@ def search_stop(data):
 @app.get('/stop')
 @cache.cached(timeout=CACHE_TIMEOUT)
 def get_all_stops():
-    """Returns all stop summaries"""
+    """
+    > It returns a dictionary of all the stop summaries
+    :return: A dictionary of all the stops in the database.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -117,7 +141,10 @@ def get_all_stops():
 @app.get('/points')
 @cache.cached(timeout=CACHE_TIMEOUT)
 def get_all_points():
-    """Returns all points, don't use this unless you MUST"""
+    """
+    > This function returns all points in the database, don't use this unless you MUST
+    :return: A dictionary of dictionaries.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -134,7 +161,12 @@ def get_all_points():
 
 @app.get('/points/stop/<data>')
 def get_points_by_stop(data):
-    """Returns specific set of points by stop"""
+    """
+    It takes a stop number, and returns a dictionary of all the points for that stop
+
+    :param data: The stop number
+    :return: A dictionary of dictionaries.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -151,7 +183,12 @@ def get_points_by_stop(data):
 
 @app.get('/points/bus/<data>')
 def get_points_by_bus(data):
-    """Returns specific set of points by bus"""
+    """
+    It takes a bus number as input, and returns a dictionary of all the points for that bus
+
+    :param data: The bus number you want to get the points for
+    :return: A dictionary of dictionaries.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -168,7 +205,12 @@ def get_points_by_bus(data):
 
 @app.get('/points/route/<data>')
 def get_points_by_route(data):
-    """Returns specific set of points by route"""
+    """
+    It takes a route number, and returns a dictionary of all the points for that route
+
+    :param data: The route number
+    :return: A dictionary of dictionaries.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -185,7 +227,12 @@ def get_points_by_route(data):
 
 @app.get('/points/year/<data>')
 def get_points_by_year(data):
-    """Returns specific set of points by route"""
+    """
+    > This function takes a year as an argument and returns a dictionary of all the stop points for that year
+
+    :param data: The year you want to get the data for
+    :return: A dictionary of dictionaries.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -202,7 +249,12 @@ def get_points_by_year(data):
 
 @app.get('/points/month/<data>')
 def get_points_by_month(data):
-    """Returns specific set of points by route"""
+    """
+    It takes a month as an argument, and returns a dictionary of all the stop points for that month
+
+    :param data: The month you want to get the data for
+    :return: A dictionary of dictionaries.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -219,8 +271,13 @@ def get_points_by_month(data):
 
 @app.get('/points/hour/<data>')
 def get_points_by_hour(data):
-    """Returns specific set of points by route"""
-    # Init our timer
+    """
+    It takes a number (0-23) and returns a dictionary of all the stop points that occurred during that hour
+
+    :param data: the hour you want to get the data for
+    :return: A dictionary of dictionaries.
+    """
+
     timer = datetime.now()
     out = {}
     result = db.session.query(db.StopPoint).where(db.extract('hour', db.StopPoint.date_time) == data)
@@ -236,7 +293,13 @@ def get_points_by_hour(data):
 
 @app.get('/points/year/<year>/month/<month>')
 def get_points_by_year_and_month(year, month):
-    """Returns specific set of points by route"""
+    """
+    > This function returns a dictionary of points for a specific year and month
+
+    :param year: The year you want to get points for
+    :param month: The month you want to get data for
+    :return: A dictionary of dictionaries.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -254,7 +317,10 @@ def get_points_by_year_and_month(year, month):
 
 @app.get('/lines')
 def get_lines():
-    """Returns all lines"""
+    """
+    It gets all the lines and their data from the database
+    :return: A dictionary of dictionaries.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -267,7 +333,14 @@ def get_lines():
 
 @app.get('/line/name/<name>')
 def get_line_by_name(name):
-    """Returns specific line"""
+    """
+    > This function takes a route name and returns a dictionary of the number of people on the route and the number of stops
+    on the route
+
+    :param name: The name of the line you want to get data for
+    :return: A dictionary with the route name as the key and a dictionary with the number of people on the route and the
+    number of stops on the route as the value.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
@@ -280,13 +353,30 @@ def get_line_by_name(name):
 
 @app.get('/line/riders/<riders>')
 def get_line_by_riders(riders):
-    """Returns specific line"""
+    """
+    This function takes in a number of riders and returns a dictionary of routes and the number of people on that route
+    only routes with more than that number of riders will be returned
+
+    :param riders: The number of riders on the bus
+    :return: A dictionary of routes and the number of people on the route and the number of stops on the route.
+    """
     # Init our timer
     timer = datetime.now()
     out = {}
     result = db.session.query(db.RouteSummary).where(db.RouteSummary.on > riders)
     for row in result:
         out[row.route] = {"people": row.on, "stops": row.on_count}
+    print(datetime.now() - timer)
+    return out
+
+@app.get('/stops/month/<month>')
+def get_stop_by_month(month):
+    timer = datetime.now()
+    out = {}
+    result = db.session.query(db.StopPoint).where(db.extract('month', db.StopPoint.date_time) == month)
+    for row in result:
+        if not row.stop == "":
+            out[row.stop] = out.get(row.stop,0) + row.count
     print(datetime.now() - timer)
     return out
 
