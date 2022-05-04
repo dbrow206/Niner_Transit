@@ -11,13 +11,14 @@ exports.line = (req, res)=>{
 };
 
 exports.stop = (req, res, next) => {
-  server.getStops()
+  server.getMonthStops()
   .then(result=>{
     var avgStopRiders = result;
     res.render('./trends/stopTrends', {avgStopRiders});
   })
   .catch();
 };
+
 
 exports.mapstops = (req, res, next) => {
   server.getStops()
