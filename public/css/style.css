@@ -54,18 +54,16 @@ h3{
 }
 
 .rightDiv{
-  margin-left: 50%;
-  height: 100px;
-  padding-top: 250px;
-  padding-right: 75px;
-}
+  border-top: 150px;
+   height: 100%;
+   width: 40%;
+   float: right;
+   }	
 
 .leftDiv{
-  width: 50%; 
-  height: 100px; 
-  float: left;
-  padding-left: 300px;
-  padding-top: 75 px;
+height: 100%;
+width: 60%;
+float: left;
 }
 
 .imageLeft{
@@ -83,6 +81,7 @@ h3{
 }
 
 .table_Data {
+  border-top: 150px;
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.9em;
@@ -194,16 +193,30 @@ label {
 .input-parent input:focus {
   box-shadow: 0px 0px 0px 1px #00ff48;
 }
-button {
+button{
   padding: 10px 18px;
   font-size: 15px;
   background: goldenrod;
   width: 100%;
-  border: none;
+  border: black;
   border-radius: 4px;
   color: #f4f4f4;
   transition: all 0.2s ease;
 }
+.month{
+  padding: 16px;
+  font-size: 13px;
+  background: green;
+  width: 60px;
+  height: 20px;
+  border: black;
+  color: white;
+ 
+  display: inline-block;
+
+ 
+}
+
 body{
   margin: 0px
 }

@@ -1,15 +1,15 @@
 <%- include('../partials/header.ejs')%>
-<div class="column-left">
-    <canvas id="myChart" height="600" width="1200"></canvas>
+<div class="leftDiv">
+    <canvas id="myChart" height="600" width="1100"></canvas>
   
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-  <script>
+<script>
     const labels = [
       "CRI Deck",
       "Martin Hall",
-"Lot 5A",
+      "Lot 5A",
 "Cone Deck W",
 "Duke Centennial Hall East",
 "Lot 6",
@@ -52,8 +52,6 @@
 "Belk Hall S",
 "North Deck",
 "South Village Deck",
-"Charter start",
-"Charter end",
 "Levine Hall E",
 "Motor Sports",
 "Foundation Bldg. South",
@@ -139,8 +137,6 @@
         <%=avgStopRiders['Belk Hall S']%>,
         <%=avgStopRiders['North Deck']%>,
         <%=avgStopRiders['South Village Deck']%>,
-        <%=avgStopRiders['Charter start']%>,
-        <%=avgStopRiders['Charter end']%>,
         <%=avgStopRiders['Levine Hall E']%>,
         <%=avgStopRiders['Motor Sports']%>,
         <%=avgStopRiders['Foundation Bldg. South']%>,
@@ -178,9 +174,8 @@
 </div>
 
 
-<div class="column-right">
+<div class="rightDiv">
 <table class = "table_Data">
- 
     <tr>
       <th>Average On  </th>
       <th>Busiest Time</th>
@@ -211,18 +206,18 @@
       <td>Student Union W 2:00PM</td>  
     </tr>
   </table>
-  <a href="#" class="button">January</a>
-  <a href="#" style="background-color:gold" class="button" color>Febuary</a>
-  <a href="#" style="background-color:silver" class="button">March</a>
-  <a href="#" class="button">April</a>
-  <a href="#" style="background-color:gold" class="button">May</a>
-  <a href="#" style="background-color:silver" class="button">June</a>
-  <a href="#" class="button">July</a>
-  <a href="#" style="background-color:gold" class="button">August</a>
-  <a href="#" style="background-color:silver" class="button">September</a>
-  <a href="#" class="button">October</a>
-  <a href="#" style="background-color:gold" class="button">November</a>
-  <a href="#" style="background-color:silver" class="button">Decemeber</a>
+  <a href="#" class="month">January</a>
+  <a href="#" style="background-color:gold" class="month" color>Febuary</a>
+  <a href="#" style="background-color:silver" class="month">March</a>
+  <a href="#" class="month">April</a><br>
+  <a href="#" style="background-color:gold" class="month">May</a>
+  <a href="#" style="background-color:silver" class="month">June</a>
+  <a href="#" class="month">July</a>
+  <a href="#" style="background-color:gold" class="month">August</a><br>
+  <a href="#" style="background-color:silver" class="month">September</a>
+  <a href="#" class="month">October</a>
+  <a href="#" style="background-color:gold" class="month">November</a>
+  <a href="#" style="background-color:silver" class="month">Decemeber</a>
   
 </div>
 
