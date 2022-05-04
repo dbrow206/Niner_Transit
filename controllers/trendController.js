@@ -13,7 +13,7 @@ exports.line = (req, res)=>{
 exports.stop = (req, res, next) => {
   server.getStops()
   .then(result=>{
-    var avgStopRiders = result[0];
+    var avgStopRiders = result;
     res.render('./trends/stopTrends', {avgStopRiders});
   })
   .catch();
