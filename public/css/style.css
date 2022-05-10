@@ -53,12 +53,18 @@ h3{
   padding-right: 1600px;
 }
 
-.rightDiv{
+.rightDivLine{
   border-top: 150px;
    height: 100%;
    width: 40%;
    float: right;
    }	
+   .rightDiv{
+    padding: 160px 0;
+     height: 100%;
+     width: 40%;
+     float: right;
+     }	
 
 .leftDiv{
 height: 100%;

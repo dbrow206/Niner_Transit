@@ -28,13 +28,68 @@ module.exports.getLines = async function getLines () {
   return data;
 }
 
-module.exports.getMonthStops = async function getMonthStops (month) {
-  var month = 01;
-  var data = await this.getData('stops/month/' + month)
-
-
+module.exports.getMonthStops01 = async function getMonthStops01() {
+  let month = 01;
+  var data =  this.getData('stops/month/' + month)
   return data;
 }
+module.exports.getMonthStops02 = async function getMonthStops02() {
+  let month = 02;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+module.exports.getMonthStops03 = async function getMonthStops03() {
+  let month = 03;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+module.exports.getMonthStops04 = async function getMonthStops04() {
+  let month = 04;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+module.exports.getMonthStops05 = async function getMonthStops05() {
+  let month = 05;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+module.exports.getMonthStops06 = async function getMonthStops06() {
+  let month = 06;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+module.exports.getMonthStops07 = async function getMonthStops07() {
+  let month = 07;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+module.exports.getMonthStops08 = async function getMonthStops08() {
+  let month = 08;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+module.exports.getMonthStops09 = async function getMonthStops059() {
+  let month = 05;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+module.exports.getMonthStops10 = async function getMonthStops10() {
+  let month = 05;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+module.exports.getMonthStops11 = async function getMonthStops11() {
+  let month = 05;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+module.exports.getMonthStops12 = async function getMonthStops12() {
+  let month = 12;
+  var data =  this.getData('stops/month/' + month)
+  return data;
+}
+
+
 
 module.exports.getStops = async function getStops () {
   var stopAverages = []
@@ -98,7 +153,67 @@ module.exports.getStops = async function getStops () {
   return data;
 }
 
+module.exports.getStopNumbers = async function getStopNumbers () {
+  var stopNumbers = []
+  var data = await this.getData('stop')
 
+  stopNumbers['CRI Deck'] = data['CRI Deck'].stops;
+  stopNumbers['Martin Hall'] = data['Martin Hall'].stops;
+  stopNumbers['Lot 5A'] = data['Lot 5A'].stops;
+  stopNumbers['Cone Deck W'] = data['Cone Deck W'].stops;
+  stopNumbers['Duke Centennial Hall East'] = data['Duke Centennial Hall East'].stops;
+  stopNumbers['Lot 6'] = data['Lot 6'].stops;
+  stopNumbers['Student Union W'] = data['Student Union W'].stops;
+  stopNumbers['Grigg Hall E'] = data['Grigg Hall E'].stops;
+  stopNumbers['Student Union E'] = data['Student Union E'].stops;
+  stopNumbers['Student Health N'] = data['Student Health N'].stops;
+  stopNumbers['PORTAL East'] = data['PORTAL East'].stops;
+  stopNumbers['Woodward Hall East'] = data['Woodward Hall East'].stops;
+  stopNumbers['Portal W'] = data['Portal W'].stops;
+  stopNumbers['Wallis Hall W/Light Rail'] = data['Wallis Hall W/Light Rail'].stops;
+  stopNumbers['Aux Services East'] = data['Aux Services East'].stops;
+  stopNumbers['Union Deck/Belk N'] = data['Union Deck/Belk N'].stops;
+  stopNumbers['Grigg Hall W'] = data['Grigg Hall W'].stops;
+  stopNumbers['EPIC N'] = data['EPIC N'].stops;
+  stopNumbers['Wallis Hall E/Light Rail'] = data['Wallis Hall E/Light Rail'].stops;
+  stopNumbers['East Deck 2'] = data['East Deck 2'].stops;
+  stopNumbers['Athletics Complex W'] = data['Athletics Complex W'].stops;
+  stopNumbers['Student Health E'] = data['Student Health E'].stops;
+  stopNumbers['Robinson Hall S'] = data['Robinson Hall S'].stops;
+  stopNumbers['Aux Services West'] = data['Aux Services West'].stops;
+  stopNumbers['Hickory Hall South'] = data['Hickory Hall South'].stops;
+  stopNumbers['Fretwell N'] = data['Fretwell N'].stops;
+  stopNumbers['Student Health (Green) W'] = data['Student Health (Green) W'].stops;
+  stopNumbers['Hickory Hall North'] = data['Hickory Hall North'].stops;
+  stopNumbers['Reese East'] = data['Reese East'].stops;
+  stopNumbers['Hunt Hall'] = data['Hunt Hall'].stops;
+  stopNumbers['Robinson Hall N'] = data['Robinson Hall N'].stops;
+  stopNumbers['Cato Hall N'] = data['Cato Hall N'].stops;
+  stopNumbers['Fretwell S'] = data['Fretwell S'].stops;
+  stopNumbers['Cone Deck East'] = data['Cone Deck East'].stops;
+  stopNumbers['Cato Hall S'] = data['Cato Hall S'].stops;
+  stopNumbers['Athletics Complex E'] = data['Athletics Complex E'].stops;
+  stopNumbers['Foundation Bldg. North'] = data['Foundation Bldg. North'].stops;
+  stopNumbers['Event'] = data['Event'].stops;
+  stopNumbers['Reese West'] = data['Reese West'].stops;
+  stopNumbers['Harris Alumni Center South'] = data['Harris Alumni Center South'].stops;
+  stopNumbers['Levine Hall W'] = data['Levine Hall W'].stops;
+  stopNumbers['Harris Alumni Center North'] = data['Harris Alumni Center North'].stops;
+  stopNumbers['Belk Hall S'] = data['Belk Hall S'].stops;
+  stopNumbers['North Deck'] = data['North Deck'].stops;
+  stopNumbers['South Village Deck'] = data['South Village Deck'].stops;
+  stopNumbers['Charter start'] = data['Charter start'].stops;
+  stopNumbers['Charter end'] = data['Charter end'].stops;
+  stopNumbers['Levine Hall E'] = data['Levine Hall E'].stops;
+  stopNumbers['Motor Sports'] = data['Motor Sports'].stops;
+  stopNumbers['Foundation Bldg. South'] = data['Foundation Bldg. South'].stops;
+  stopNumbers['Alumni Way E'] = data['Alumni Way E'].stops;
+
+
+  data = [stopNumbers];
+
+  return data;
+}
 
 function convertTime (hour) {
   var time = '';
