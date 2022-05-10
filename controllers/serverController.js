@@ -94,8 +94,10 @@ module.exports.getMonthStops12 = async function getMonthStops12() {
 module.exports.getStops = async function getStops () {
   var stopAverages = []
   var stopNumbers =[]
+  var offAverages = []
   var data = await this.getData('stop')
 
+  //Populate Array with stop_average data
   stopAverages['CRI Deck'] = (data['CRI Deck'].on_average).toFixed(2);
   stopAverages['Martin Hall'] = (data['Martin Hall'].on_average).toFixed(2);
   stopAverages['Lot 5A'] = (data['Lot 5A'].on_average).toFixed(2);
@@ -148,8 +150,8 @@ module.exports.getStops = async function getStops () {
   stopAverages['Foundation Bldg. South'] = (data['Foundation Bldg. South'].on_average).toFixed(2);
   stopAverages['Alumni Way E'] = (data['Alumni Way E'].on_average).toFixed(2);
 
-  /////////////////////////////////////////////////////////////////////////
 
+  //Populate array with total stop data
   stopNumbers['CRI Deck'] = data['CRI Deck'].stops;
   stopNumbers['Martin Hall'] = data['Martin Hall'].stops;
   stopNumbers['Lot 5A'] = data['Lot 5A'].stops;
@@ -202,8 +204,60 @@ module.exports.getStops = async function getStops () {
   stopNumbers['Foundation Bldg. South'] = data['Foundation Bldg. South'].stops;
   stopNumbers['Alumni Way E'] = data['Alumni Way E'].stops;
 
+   //Populate array with off averages
+   offAverages['CRI Deck'] = data['CRI Deck'].off_average.toFixed(2);
+   offAverages['Martin Hall'] = data['Martin Hall'].off_average.toFixed(2);
+   offAverages['Lot 5A'] = data['Lot 5A'].off_average.toFixed(2);
+   offAverages['Cone Deck W'] = data['Cone Deck W'].off_average.toFixed(2);
+   offAverages['Duke Centennial Hall East'] = data['Duke Centennial Hall East'].off_average.toFixed(2);
+   offAverages['Lot 6'] = data['Lot 6'].off_average.toFixed(2);
+   offAverages['Student Union W'] = data['Student Union W'].off_average.toFixed(2);
+   offAverages['Grigg Hall E'] = data['Grigg Hall E'].off_average.toFixed(2);
+   offAverages['Student Union E'] = data['Student Union E'].off_average.toFixed(2);
+   offAverages['Student Health N'] = data['Student Health N'].off_average.toFixed(2);
+   offAverages['PORTAL East'] = data['PORTAL East'].off_average.toFixed(2);
+   offAverages['Woodward Hall East'] = data['Woodward Hall East'].off_average.toFixed(2);
+   offAverages['Portal W'] = data['Portal W'].off_average.toFixed(2);
+   offAverages['Wallis Hall W/Light Rail'] = data['Wallis Hall W/Light Rail'].off_average.toFixed(2);
+   offAverages['Aux Services East'] = data['Aux Services East'].off_average.toFixed(2);
+   offAverages['Union Deck/Belk N'] = data['Union Deck/Belk N'].off_average.toFixed(2);
+   offAverages['Grigg Hall W'] = data['Grigg Hall W'].off_average.toFixed(2);
+   offAverages['EPIC N'] = data['EPIC N'].off_average.toFixed(2);
+   offAverages['Wallis Hall E/Light Rail'] = data['Wallis Hall E/Light Rail'].off_average.toFixed(2);
+   offAverages['East Deck 2'] = data['East Deck 2'].off_average.toFixed(2);
+   offAverages['Athletics Complex W'] = data['Athletics Complex W'].off_average.toFixed(2);
+   offAverages['Student Health E'] = data['Student Health E'].off_average.toFixed(2);
+   offAverages['Robinson Hall S'] = data['Robinson Hall S'].off_average.toFixed(2);
+   offAverages['Aux Services West'] = data['Aux Services West'].off_average.toFixed(2);
+   offAverages['Hickory Hall South'] = data['Hickory Hall South'].off_average.toFixed(2);
+   offAverages['Fretwell N'] = data['Fretwell N'].off_average.toFixed(2);
+   offAverages['Student Health (Green) W'] = data['Student Health (Green) W'].off_average.toFixed(2);
+   offAverages['Hickory Hall North'] = data['Hickory Hall North'].off_average.toFixed(2);
+   offAverages['Reese East'] = data['Reese East'].off_average.toFixed(2);
+   offAverages['Hunt Hall'] = data['Hunt Hall'].off_average.toFixed(2);
+   offAverages['Robinson Hall N'] = data['Robinson Hall N'].off_average.toFixed(2);
+   offAverages['Cato Hall N'] = data['Cato Hall N'].off_average.toFixed(2);
+   offAverages['Fretwell S'] = data['Fretwell S'].off_average.toFixed(2);
+   offAverages['Cone Deck East'] = data['Cone Deck East'].off_average.toFixed(2);
+   offAverages['Cato Hall S'] = data['Cato Hall S'].off_average.toFixed(2);
+   offAverages['Athletics Complex E'] = data['Athletics Complex E'].off_average.toFixed(2);
+   offAverages['Foundation Bldg. North'] = data['Foundation Bldg. North'].off_average.toFixed(2);
+   offAverages['Event'] = data['Event'].off_average.toFixed(2);
+   offAverages['Reese West'] = data['Reese West'].off_average.toFixed(2);
+   offAverages['Harris Alumni Center South'] = data['Harris Alumni Center South'].off_average.toFixed(2);
+   offAverages['Levine Hall W'] = data['Levine Hall W'].off_average.toFixed(2);
+   offAverages['Harris Alumni Center North'] = data['Harris Alumni Center North'].off_average.toFixed(2);
+   offAverages['Belk Hall S'] = data['Belk Hall S'].off_average.toFixed(2);
+   offAverages['North Deck'] = data['North Deck'].off_average.toFixed(2);
+   offAverages['South Village Deck'] = data['South Village Deck'].off_average.toFixed(2);
+   offAverages['Charter start'] = data['Charter start'].off_average.toFixed(2);
+   offAverages['Charter end'] = data['Charter end'].off_average.toFixed(2);
+   offAverages['Levine Hall E'] = data['Levine Hall E'].off_average.toFixed(2);
+   offAverages['Motor Sports'] = data['Motor Sports'].off_average.toFixed(2);
+   offAverages['Foundation Bldg. South'] = data['Foundation Bldg. South'].off_average.toFixed(2);
+   offAverages['Alumni Way E'] = data['Alumni Way E'].off_average.toFixed(2);
 
-  data = [stopAverages,stopNumbers];
+  data = [stopAverages,stopNumbers,offAverages];
 
   return data;
 }
