@@ -17,6 +17,7 @@ li a {
   text-align: center;
   padding: 14px 10px;
   text-decoration: none;
+  font-size: 20px;
 }
 
 li a:hover {
@@ -30,19 +31,11 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-h1{
-  background-color: rgb(0, 116, 0);
-  color: rgb(247, 255, 245);
-  text-align: center;
-  font-size: 40pt;
+  font-family: 'georgia';
 }
 
-p{
-  font-size: 15pt;    
-  font-weight: bold;
-  text-emphasis-color: rgb(255, 255, 255);
-}
+
+
 
 h3{
   align-content: center;
@@ -209,20 +202,18 @@ button{
   color: #f4f4f4;
   transition: all 0.2s ease;
 }
-.month{
-  padding: 16px;
-  font-size: 13px;
-  background: green;
-  width: 60px;
-  height: 20px;
-  border: black;
+
+.month {
+  background-color: #4CAF50;
+  border: none;
   color: white;
- 
+  padding: 15px 32px;
+  width: 80px;
+  text-align: center;
+  text-decoration: none;
   display: inline-block;
-
- 
+  font-size: 16px;
 }
-
 body{
   margin: 0px
 }
@@ -232,4 +223,55 @@ form{
 h4{
   padding-left: 25px;
   font-size: 20px;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+  height: 700px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.GreenImage{
+  border:5px solid green;
+}
+.GoldImage{
+  border:5px solid gold;
+}
+.SilverImage{
+  border:5px solid silver;
+}
+
+.greenlist{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+ol li{
+  list-style-type: circle;
+  font: bold;
+  text-align: justify;
+}
+
+.GoldName{
+  background-color: gold;
+  
+}
+.GreenName{
+  background-color: green;
+}
+.SilverName{
+  background-color: Silver;
+}
+
+h1{
+background-clip: padding-box;
 }
