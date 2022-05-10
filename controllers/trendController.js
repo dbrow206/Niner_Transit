@@ -111,12 +111,10 @@ exports.stop12 = (req, res, next) => {
 exports.mapstops = (req, res, next) => {
   server.getStops()
   .then(result=>{
-    console.log("Hell01");
     var avgStopRiders = result[0];
-    console.log(avgStopRiders);
     var stopNumbers = result[1];
-    console.log(stopNumbers);
-    res.render('./trends/interactiveMap', {avgStopRiders , stopNumbers});
+    var offAverages = result[2];
+    res.render('./trends/interactiveMap', {avgStopRiders , stopNumbers, offAverages});
   })
   .catch();
 };
