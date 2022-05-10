@@ -36,9 +36,7 @@ app.get('/index', (req,res) =>{
   res.render('index');
 });
 
-app.get('/suggestions', (req,res)=>{
-  res.render('suggestions');
-});
+
 
 module.exports = app
 
