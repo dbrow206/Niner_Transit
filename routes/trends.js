@@ -15,7 +15,7 @@ router.get('/stopTrends09/', controller.stop09);
 router.get('/stopTrends10/', controller.stop10);
 router.get('/stopTrends11/', controller.stop11);
 router.get('/stopTrends12/', controller.stop12);
-router.get('/interactiveMap', controller.mapstops, controller.mapstopsnumbers);
+router.get('/interactiveMap', controller.mapstops);
 
 module.exports = router;
 
