@@ -1,20 +1,23 @@
-<%- include('./partials/header.ejs')%>
+<%- include('../partials/header.ejs')%>
 <h4>Submit your Suggestions here</h4>
-<form>
+<form action = '/users' method = 'POST'>
 <label for="name">First Name</label>
 <input type="text" id="name" name="firstname" placeholder="Your name..">
+
 <div>
 <label for="name">Last Name</label>
 <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 </div>
+
 <div>
     <label for="email">Email</label>
     <input type="text" id="email" name="email" placeholder="Your email...">
 </div>
+
 <div>
     <label for="subject">Suggestion</label>
     <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px" style="width:80%"></textarea>
-   <div> <input type="submit" value="Submit"> </div>
+   <div> <button>Submit</button> </div>
 </div>
 </form>
-<%- include('./partials/footer.ejs')%>
+<%- include('../partials/footer.ejs')%>
