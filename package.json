@@ -19,6 +19,7 @@
     "jsdom": "^19.0.0",
     "morgan": "~1.9.1",
     "node-fetch": "^2.6.7",
+    "nodemailer": "^6.7.5",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3",
     "request-promise": "^4.2.6",
