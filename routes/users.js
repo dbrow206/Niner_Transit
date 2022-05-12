@@ -8,7 +8,7 @@ router.get('/new', controller.new);
 //GET /users/login: send html for logging in
 router.get('/login', controller.getUserLogin);
 
-router.post('/', controller.storeSuggestion);
+router.post('/', controller.createSuggestion);
 router.get('/suggestions', controller.suggestions);
 
 module.exports = router;

@@ -1,0 +1,88 @@
+<%- include('../partials/header.ejs')%>
+<div class ="leftDiv">
+<div>
+    <canvas id="myChart" height="500" width="500"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  
+  <script>
+    const labels = [
+      'Green',
+      'Gold',
+      'Silver',
+    ];
+  
+    const data = {
+      labels: labels,
+      datasets: [{
+        color: 'rgb(0, 0, 0)',
+        label: 'Line Trend Data',
+        backgroundColor:[
+         'rgb(89,248,89)',
+         'rgb(255, 223, 0)',
+         'rgb(192, 192, 192)'
+      ]
+      ,
+        borderColor: 'rgb(0, 0, 0)',
+        data: 
+        [<%=avgRiders['Green']%>,
+        <%=avgRiders['Gold']%>,
+        <%=avgRiders['Silver']%>],
+      }]
+    };  
+
+    const config = {
+      type: 'pie',
+      data: data,
+      options: {
+         
+         layout:{
+               padding:{
+                   right:200,
+                   top: 75
+               }
+           },
+         "responsive": true,
+         "maintainAspectRatio": false
+         
+ 
+       }
+    };
+  </script>
+
+<script>
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script>
+</div>
+
+<br><br><br>
+<div class="rightDivLine">
+<table class = "table_Data">
+
+
+
+  
+
+  <h1>Selected Month: January.</h1>
+
+<a href="/trends/lineTrends01" class="month">January</a>
+  <a href="/trends/lineTrends02" style="background-color:gold" class="month" color>Febuary</a>
+  <a href="/trends/lineTrends04" style="background-color:silver" class="month">March</a>
+  <a href="/trends/lineTrends04" class="month">April</a><br>
+  <a href="/trends/lineTrends05" style="background-color:gold" class="month">May</a>
+  <a href="/trends/lineTrends06" style="background-color:silver" class="month">June</a>
+  <a href="/trends/lineTrends07" class="month">July</a>
+  <a href="/trends/lineTrends08" style="background-color:gold" class="month">August</a><br>
+  <a href="/trends/lineTrends09" style="background-color:silver" class="month">September</a>
+  <a href="/trends/lineTrends10" class="month">October</a>
+  <a href="/trends/lineTrends11" style="background-color:gold" class="month">November</a>
+  <a href="/trends/lineTrends12" style="background-color:silver" class="month">Decemeber</a>
+  
+</div>
+</div>
+<%- include('../partials/footer.ejs')%>

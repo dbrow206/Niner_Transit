@@ -10,21 +10,64 @@ module.exports.getData = async function getData(urlName){
   return await parseData;
   }
 
-module.exports.getLines = async function getLines () {
-  var averages = []
-  var peakTimes = []
-  var data = await this.getData('lines')
-  
-  averages['green'] = (data['Green'].people / data['Green'].stops).toFixed(2);
-  averages['gold'] = (data['Gold'].people / data['Gold'].stops).toFixed(2);
-  averages['silver'] = (data['Silver'].people / data['Silver'].stops).toFixed(2);
-  
-  peakTimes['green'] = convertTime(data['Green'].peak_hour);
-  peakTimes['gold'] = convertTime(data['Gold'].peak_hour);
-  peakTimes['silver'] = convertTime(data['Silver'].peak_hour);
-
-  data = [averages, peakTimes];
-
+module.exports.getLines01 = async function getLines () {
+  let month = 01;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines02 = async function getLines () {
+  let month = 02;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines03 = async function getLines () {
+  let month = 03;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines04 = async function getLines () {
+  let month = 04;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines05 = async function getLines () {
+  let month = 05;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines06 = async function getLines () {
+  let month = 06;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines07 = async function getLines () {
+  let month = 07;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines08 = async function getLines () {
+  let month = 08;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines09 = async function getLines () {
+  let month = 09;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines10 = async function getLines () {
+  let month = 10;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines11 = async function getLines () {
+  let month = 11;
+  var data = await this.getData('routes/month/' + month);
+  return data;
+}
+module.exports.getLines12 = async function getLines () {
+  let month = 12;
+  var data = await this.getData('routes/month/' + month);
   return data;
 }
 
@@ -69,17 +112,17 @@ module.exports.getMonthStops08 = async function getMonthStops08() {
   return data;
 }
 module.exports.getMonthStops09 = async function getMonthStops059() {
-  let month = 05;
+  let month = 09;
   var data =  this.getData('stops/month/' + month)
   return data;
 }
 module.exports.getMonthStops10 = async function getMonthStops10() {
-  let month = 05;
+  let month = 10;
   var data =  this.getData('stops/month/' + month)
   return data;
 }
 module.exports.getMonthStops11 = async function getMonthStops11() {
-  let month = 05;
+  let month = 11;
   var data =  this.getData('stops/month/' + month)
   return data;
 }

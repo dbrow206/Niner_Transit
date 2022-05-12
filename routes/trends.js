@@ -2,7 +2,19 @@ var express = require('express');
 const controller = require('../controllers/trendController');
 var router = express.Router();
 
-router.get('/lineTrends', controller.line);
+router.get('/lineTrends01', controller.line01);
+router.get('/lineTrends02', controller.line02);
+router.get('/lineTrends03', controller.line03);
+router.get('/lineTrends04', controller.line04);
+router.get('/lineTrends05', controller.line05);
+router.get('/lineTrends06', controller.line06);
+router.get('/lineTrends07', controller.line07);
+router.get('/lineTrends08', controller.line08);
+router.get('/lineTrends09', controller.line09);
+router.get('/lineTrends10', controller.line10);
+router.get('/lineTrends11', controller.line11);
+router.get('/lineTrends12', controller.line12);
+
 router.get('/stopTrends01/', controller.stop01);
 router.get('/stopTrends02/', controller.stop02);
 router.get('/stopTrends03/', controller.stop03);
